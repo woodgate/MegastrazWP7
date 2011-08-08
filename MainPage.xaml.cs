@@ -20,8 +20,7 @@ namespace MegaStarzWP7
         // Constructor
         public MainPage()
         {
-            
-            DataContext = new MegaStarzViewModelcs();
+            DataContext = ((App)Application.Current).SongList;
             InitializeComponent();
             
         }

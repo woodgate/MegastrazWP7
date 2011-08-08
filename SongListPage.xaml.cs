@@ -10,13 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-
+using MegaStarzWP7.ViewModels;
 namespace MegaStarzWP7
 {
     public partial class SongListPage : PhoneApplicationPage
     {
         public SongListPage()
         {
+            DataContext = ((App) Application.Current).SongList;
             InitializeComponent();
         }
     }
