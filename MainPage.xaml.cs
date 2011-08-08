@@ -19,7 +19,7 @@ namespace MegaStarzWP7
         // Constructor
         public MainPage()
         {
-            DataContext = new MegaStarzViewModelcs;
+            DataContext = new MegaStarzViewModelcs();
             InitializeComponent();
         }
     }
