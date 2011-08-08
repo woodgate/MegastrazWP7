@@ -66,18 +66,21 @@ namespace MegaStarzWP7
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            SongList = new MegaStarzViewModelcs();
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            //TODO: deserialize the Songlist
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
+            //TODO: serialize the Songlist
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
