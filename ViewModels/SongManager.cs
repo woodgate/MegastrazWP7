@@ -5,36 +5,42 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MegaStarzWP7.Models;
 using Megastar.RestServices.Library.Entities;
 
 namespace MegaStarzWP7.ViewModels
 {
     public class SongManager
     {
-        public readonly static string fileDirectory = @"Megastarz\Video\"; //TODO: Get from settings
-        private static readonly IsolatedStorageFile _isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
-
+        public readonly static string fileDirectory = @"Megastarz\Video"; //TODO: Get from settings
+        
         public static bool CheckIfSongIsLoaded(int id)
         {
+            var _isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
             return
-            _isolatedStorageFile.FileExists(fileDirectory + id.ToString());
+            _isolatedStorageFile.FileExists(fileDirectory + "\\" + id.ToString());
         }
 
 
 
-        public static void DownloadAndSaveSongAsync(SongResponse song, Action<SongResponse> callback)
+        public static void DownloadAndSaveSongAsync(SongModel song)
         {
+            if (song.IsLoaded)
+                return;
+
             WebClient webClient = new WebClient();
             
             //webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
 
+
+            //Set Callback action on Read Complete
             webClient.OpenReadCompleted += (sender, args) =>
                                                {
-                                                   webClient_OpenReadCompleted(sender, args, callback, song);
+                                                   webClient_OpenReadCompleted(sender, args, song);
                                                };
             
-            
-            webClient.OpenReadAsync(new Uri(song.playUrl));
+            //Start Read Async
+            webClient.OpenReadAsync(song.ServerURI);
         }
 
         private static bool IncreaseIsolatedStorageSpace(long quotaSizeDemand)
@@ -56,7 +62,7 @@ namespace MegaStarzWP7.ViewModels
             return CanSizeIncrease;
         }
 
-        private static void webClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e, Action<SongResponse> callback, SongResponse song)
+        private static void webClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e, SongModel song)
         {
             try
             {
@@ -65,17 +71,18 @@ namespace MegaStarzWP7.ViewModels
                     IsolatedStorageFileStream isolatedStorageFileStream;
                     IsolatedStorageFile isolatedStorageFile;
 
+                    //TODO: Check that file save os done correctly
                     #region Isolated Storage Copy Code
                     isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
                     bool checkQuotaIncrease = IncreaseIsolatedStorageSpace(e.Result.Length);
 
-                    if (!isolatedStorageFile.DirectoryExists("DownloadedSongs"))
+                    if (!isolatedStorageFile.DirectoryExists(fileDirectory))
                     {
-                        isolatedStorageFile.CreateDirectory("DownloadedSongs");
+                        isolatedStorageFile.CreateDirectory(fileDirectory);
                     }
 
-                    string VideoFile = "DownloadedSongs\\" + song.id.ToString();
+                    string VideoFile = fileDirectory + "\\" + song.Id.ToString();
                     isolatedStorageFileStream = new IsolatedStorageFileStream(VideoFile, FileMode.Create, isolatedStorageFile);
                     
                     long VideoFileLength = (long)e.Result.Length;
@@ -87,8 +94,9 @@ namespace MegaStarzWP7.ViewModels
                     isolatedStorageFileStream.Close();
                     #endregion
                     
-                    callback(song);
-                   
+                    //Notify song is loaded
+                    song.IsLoaded = true;
+
                 }
             }
             catch (Exception ex)

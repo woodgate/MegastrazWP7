@@ -72,9 +72,7 @@ namespace MegaStarzWP7.ViewModels
                                          {
 
                                              if (result != null)
-                                             {
-                                             }
-                                             // LoadSongList(result);
+                                              LoadSongList(result);
 
                                          });
             }
@@ -89,42 +87,27 @@ namespace MegaStarzWP7.ViewModels
         /// <summary>
         /// This function loads song list into songs Collection.
         /// </summary>
-        //private void LoadSongList(List<SongResponse> songsResponse)
-        //{
-        //    foreach (var s in songsResponse)
-        //    {
-        //        bool exists = SongManager.CheckIfSongIsLoaded(song.id);
-        //        //Download song from server with DownloadSongComplete callback
+        private void LoadSongList(List<SongResponse> songsResponse)
+        {
+            foreach (var s in songsResponse)
+            {
+                bool exists = SongManager.CheckIfSongIsLoaded(s.id);
+                //Download song from server with DownloadSongComplete callback
 
-        //        //Create corresponding SongModel
-        //        var songModel = new SongModel(s.id, s.artistName, s.name, LengthToString(s.length), null, s.playUrl);
+                //Create corresponding SongModel
+                var songModel = new SongModel(s.id, s.artistName, s.name, LengthToString(s.length), string.Empty, new Uri(s.playUrl), exists); //TODO: Get Song Picture
 
-        //        SongManager.DownloadAndSaveSongAsync(song, DownloadSongComplete);
-        //    }
-                
+                songs.Add(songModel);
+            }
+        }
 
-           
-        //}
 
-        //private void DownloadSongComplete(SongResponse song)
-        //{
-            
+        private string LengthToString(int length)
+        {
+            var timeSpan = new TimeSpan(0,0,0,length);
 
-        //    if (ShouldDownloadNextSong())
-        //        LoadNextSongFromServer();
-        //}
-
-        //private bool ShouldDownloadNextSong()
-        //{
-        //    return false;       //TODO: Download next song logic
-        //}
-
-        //private string LengthToString(int length)
-        //{
-        //    var timeSpan = new TimeSpan(0,0,0,length);
-
-        //    return timeSpan.ToString("{c}");
-        //}
+            return timeSpan.ToString("{c}");
+        }
 
         #endregion
 
