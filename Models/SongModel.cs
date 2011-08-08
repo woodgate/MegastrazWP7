@@ -16,8 +16,9 @@ namespace MegaStarzWP7.Models
     {
                 #region CTOR
 
-        public SongModel(string artist, string name, string length, string pictureURI, string songURI)
+        public SongModel(int id, string artist, string name, string length, string pictureURI, string songURI)
         {
+            this.id = id;
             this.artist = artist;
             this.name = name;
             this.length = length;
@@ -27,6 +28,7 @@ namespace MegaStarzWP7.Models
 
         #endregion
 
+        private int id;
 
         #region Properties
 
@@ -111,6 +113,24 @@ namespace MegaStarzWP7.Models
                 {
                     songURI = value;
                     NotifyPropertyChanged("SongURI");
+                }
+            }
+        }
+
+        private bool isLoaded;
+        public bool IsLoaded
+        {
+            get
+            {
+                return isLoaded;
+            }
+
+            set
+            {
+                if (value != isLoaded)
+                {
+                    isLoaded = value;
+                    NotifyPropertyChanged("IsLoaded");
                 }
             }
         }
