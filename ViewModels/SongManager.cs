@@ -3,12 +3,25 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Net;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using Megastar.RestServices.Library.Entities;
 
 namespace MegaStarzWP7.ViewModels
 {
     public class SongManager
     {
+        public readonly static string fileDirectory = @"Megastarz\Video\"; //TODO: Get from settings
+        private static readonly IsolatedStorageFile _isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
+
+        public static bool CheckIfSongIsLoaded(int id)
+        {
+            return
+            _isolatedStorageFile.FileExists(fileDirectory + id.ToString());
+        }
+
+
+
         public static void DownloadAndSaveSongAsync(SongResponse song, Action<SongResponse> callback)
         {
             WebClient webClient = new WebClient();
@@ -75,7 +88,7 @@ namespace MegaStarzWP7.ViewModels
                     #endregion
                     
                     callback(song);
-
+                   
                 }
             }
             catch (Exception ex)

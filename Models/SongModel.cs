@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using MegaStarzWP7.ViewModels;
 
 namespace MegaStarzWP7.Models
 {
@@ -16,7 +17,7 @@ namespace MegaStarzWP7.Models
     {
                 #region CTOR
 
-        public SongModel(int id, string artist, string name, string length, string pictureURI, string songURI)
+        public SongModel(int id, string artist, string name, string length, string pictureURI, string songURI, bool isLoaded)
         {
             this.id = id;
             this.artist = artist;
@@ -24,13 +25,29 @@ namespace MegaStarzWP7.Models
             this.length = length;
             this.pictureURI = pictureURI;
             this.songURI = songURI;
+            this.isLoaded = isLoaded;
         }
 
         #endregion
 
-        private int id;
+
 
         #region Properties
+
+        private int id;
+        public int Id
+        {
+            get { return id; }
+            set
+            {
+                if (value != id)
+                {
+                    id = value;
+                    NotifyPropertyChanged("Id");
+                }
+
+            }
+        }
 
         private string artist;
         public string Artist
@@ -105,16 +122,10 @@ namespace MegaStarzWP7.Models
         {
             get
             {
-                return songURI;
+                return SongManager.fileDirectory + id.ToString();
             }
-            set
-            {
-                if (value != songURI)
-                {
-                    songURI = value;
-                    NotifyPropertyChanged("SongURI");
+            set { //DoNothing
                 }
-            }
         }
 
         private bool isLoaded;

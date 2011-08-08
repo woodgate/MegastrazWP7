@@ -53,11 +53,10 @@ namespace MegaStarzWP7.ViewModels
 
 
         #region Private fields
-
-        //Songs That have not been loaded from server
-        private List<SongResponse> unloadedSongList; 
-
+        
         #endregion
+
+
         #region CTOR
 
         public MegaStarzViewModelcs()
@@ -71,10 +70,11 @@ namespace MegaStarzWP7.ViewModels
             {
                 client.GetSongsAsync((result) =>
                                          {
-                                             unloadedSongList = result;
 
                                              if (result != null)
-                                                 LoadNextSongFromServer();
+                                             {
+                                             }
+                                             // LoadSongList(result);
 
                                          });
             }
@@ -87,39 +87,44 @@ namespace MegaStarzWP7.ViewModels
         }
 
         /// <summary>
-        /// This function starts a download of the next song from the server
+        /// This function loads song list into songs Collection.
         /// </summary>
-        private void LoadNextSongFromServer()
-        {
-            if (unloadedSongList.Count > 0)
-            {
-                var song = unloadedSongList[0];
-                unloadedSongList.RemoveAt(0);
+        //private void LoadSongList(List<SongResponse> songsResponse)
+        //{
+        //    foreach (var s in songsResponse)
+        //    {
+        //        bool exists = SongManager.CheckIfSongIsLoaded(song.id);
+        //        //Download song from server with DownloadSongComplete callback
 
-                //Download song from server with DownloadSongComplete callback
-                SongManager.DownloadAndSaveSongAsync(song, DownloadSongComplete);
-            }
-        }
+        //        //Create corresponding SongModel
+        //        var songModel = new SongModel(s.id, s.artistName, s.name, LengthToString(s.length), null, s.playUrl);
 
-        private void DownloadSongComplete(SongResponse song)
-        {
-            var s = new SongModel(song.id, song.artistName, song.name, LengthToString(song.length), null, song.playUrl);
+        //        SongManager.DownloadAndSaveSongAsync(song, DownloadSongComplete);
+        //    }
+                
 
-            if (ShouldDownloadNextSong())
-                LoadNextSongFromServer();
-        }
+           
+        //}
 
-        private bool ShouldDownloadNextSong()
-        {
-            return false;       //TODO: Download next song logic
-        }
+        //private void DownloadSongComplete(SongResponse song)
+        //{
+            
 
-        private string LengthToString(int length)
-        {
-            var timeSpan = new TimeSpan(0,0,0,length);
+        //    if (ShouldDownloadNextSong())
+        //        LoadNextSongFromServer();
+        //}
 
-            return timeSpan.ToString("{c}");
-        }
+        //private bool ShouldDownloadNextSong()
+        //{
+        //    return false;       //TODO: Download next song logic
+        //}
+
+        //private string LengthToString(int length)
+        //{
+        //    var timeSpan = new TimeSpan(0,0,0,length);
+
+        //    return timeSpan.ToString("{c}");
+        //}
 
         #endregion
 

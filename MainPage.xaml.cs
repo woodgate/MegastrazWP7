@@ -11,19 +11,19 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using MegaStarzWP7.ViewModels;
 using Microsoft.Phone.Controls;
-using MegaStarzWP7.Models;
-using MegaStarzWP7.ViewModels;
+
 namespace MegaStarzWP7
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private MegaStarzViewModelcs songViewModel;
+        
         // Constructor
         public MainPage()
         {
+            
             DataContext = new MegaStarzViewModelcs();
             InitializeComponent();
-            songViewModel = new MegaStarzViewModelcs();
+            
         }
     }
 }
