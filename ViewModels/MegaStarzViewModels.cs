@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Net;
 using MegaStarzWP7.Models;
 using Megastar.Client.Library;
 using Megastar.RestServices.Library.Entities;
 
 namespace MegaStarzWP7.ViewModels
 {
-    public class MegaStarzViewModelcs : INotifyPropertyChanged
+    public class MegaStarzViewModels : INotifyPropertyChanged
     {
         #region Properties
 
@@ -51,18 +50,21 @@ namespace MegaStarzWP7.ViewModels
 
         #endregion
 
-
-        #region Private fields
-        
-        #endregion
-
-
         #region CTOR
 
-        public MegaStarzViewModelcs()
+        public MegaStarzViewModels()
         {
             songs = new ObservableCollection<SongModel>();
+        }
 
+        #endregion
+
+        #region Load Methods
+        /// <summary>
+        /// Start the process of Loading the songs from the server
+        /// </summary>
+        public void LoadSongs()
+        {
             MegaStarzClient client = new MegaStarzClient();
 
             //Get song list from server
@@ -72,7 +74,7 @@ namespace MegaStarzWP7.ViewModels
                                          {
 
                                              if (result != null)
-                                              LoadSongList(result);
+                                                 LoadSongList(result);
 
                                          });
             }
@@ -80,8 +82,6 @@ namespace MegaStarzWP7.ViewModels
             {
                 throw e; //TODO: Handle Error
             }
-
-
         }
 
         /// <summary>
@@ -95,7 +95,8 @@ namespace MegaStarzWP7.ViewModels
                 //Download song from server with DownloadSongComplete callback
 
                 //Create corresponding SongModel
-                var songModel = new SongModel(s.id, s.artistName, s.name, LengthToString(s.length), string.Empty, new Uri(s.playUrl), exists); //TODO: Get Song Picture
+                var songModel = new SongModel(s.id, s.artistName, s.name, LengthToString(s.length), string.Empty,
+                                              new Uri(s.playUrl), exists); //TODO: Get Song Picture
 
                 songs.Add(songModel);
             }
@@ -104,14 +105,21 @@ namespace MegaStarzWP7.ViewModels
 
         private string LengthToString(int length)
         {
-            var timeSpan = new TimeSpan(0,0,0,length);
+            var timeSpan = new TimeSpan(0, 0, 0, length);
 
-            return timeSpan.ToString("{c}");
+            //TODO: Nitzan, This throw "Input string was not in a correct format." exception
+            return String.Empty;
+//            return timeSpan.ToString("{c}");
         }
 
         #endregion
 
-                #region Implementation of INotifyPropertyChanged
+        #region IsolatedStorage Methods
+
+        #endregion
+
+
+        #region Implementation of INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string property)

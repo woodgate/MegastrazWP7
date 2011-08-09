@@ -24,7 +24,7 @@ namespace MegaStarzWP7
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
-        public MegaStarzViewModelcs SongList;
+        public MegaStarzViewModels SongList;
 
         /// <summary>
         /// Constructor for the Application object.
@@ -66,7 +66,9 @@ namespace MegaStarzWP7
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            SongList = new MegaStarzViewModelcs();
+            SongList = new MegaStarzViewModels();
+            SongList.LoadSongs();
+
         }
 
         // Code to execute when the application is activated (brought to foreground)
