@@ -3,17 +3,22 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using MegaStarzWP7.Models;
-using Megastar.RestServices.Library.Entities;
 
 namespace MegaStarzWP7.ViewModels
 {
+    /// <summary>
+    /// Utility methods library for handling downloading and uploading songs
+    /// </summary>
     public class SongManager
     {
         public readonly static string fileDirectory = @"Megastarz\Video"; //TODO: Get from settings
         
+        /// <summary>
+        /// Checks if the song already on the device
+        /// </summary>
+        /// <param name="id">the song ID</param>
+        /// <returns></returns>
         public static bool CheckIfSongIsLoaded(int id)
         {
             var _isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
@@ -22,7 +27,10 @@ namespace MegaStarzWP7.ViewModels
         }
 
 
-
+        /// <summary>
+        /// Download song into the device a-synchronicly
+        /// </summary>
+        /// <param name="song"></param>
         public static void DownloadAndSaveSongAsync(SongModel song)
         {
             if (song.IsLoaded)
@@ -43,24 +51,6 @@ namespace MegaStarzWP7.ViewModels
             webClient.OpenReadAsync(song.ServerURI);
         }
 
-        private static bool IncreaseIsolatedStorageSpace(long quotaSizeDemand)
-        {
-            bool CanSizeIncrease = false;
-            IsolatedStorageFile isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
-            //Get the Available space
-            long maxAvailableSpace = isolatedStorageFile.AvailableFreeSpace;
-            if (quotaSizeDemand > maxAvailableSpace)
-            {
-                if (!isolatedStorageFile.IncreaseQuotaTo(isolatedStorageFile.Quota + quotaSizeDemand))
-                {
-                    CanSizeIncrease = false;
-                    return CanSizeIncrease;
-                }
-                CanSizeIncrease = true;
-                return CanSizeIncrease;
-            }
-            return CanSizeIncrease;
-        }
 
         private static void webClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e, SongModel song)
         {
@@ -75,7 +65,7 @@ namespace MegaStarzWP7.ViewModels
                     #region Isolated Storage Copy Code
                     isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
 
-                    bool checkQuotaIncrease = IncreaseIsolatedStorageSpace(e.Result.Length);
+                    bool checkQuotaIncrease = FilesManager.CanIsolatedStorageSpaceSizeIncrease(e.Result.Length);
 
                     if (!isolatedStorageFile.DirectoryExists(fileDirectory))
                     {

@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.ComponentModel;
 using MegaStarzWP7.ViewModels;
 
@@ -15,7 +6,10 @@ namespace MegaStarzWP7.Models
 {
     public class SongModel : INotifyPropertyChanged
     {
-                #region CTOR
+        
+        //TODO: add song uri to the local media file
+        
+        #region CTOR
 
         public SongModel(int id, string artist, string name, string length, string pictureURI, Uri serverURI, bool isLoaded)
         {
