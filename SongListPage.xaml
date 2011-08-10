@@ -13,13 +13,31 @@
 
 	<phone:PhoneApplicationPage.Resources>
 		<DataTemplate x:Key="songListItem">
-			<Grid Background="#FF6BBFEB">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-				</Grid.RowDefinitions>
-				<TextBlock x:Name="Artist" TextWrapping="Wrap" Text="{Binding Artist}" d:LayoutOverrides="Width, Height" Style="{StaticResource PhoneTextTitle3Style}" HorizontalAlignment="Left"/>
-				<TextBlock x:Name="SongName" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Name}" d:LayoutOverrides="Width, Height" HorizontalAlignment="Left"/>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="3"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.Background>
+					<SolidColorBrush Color="{StaticResource PhoneContrastBackgroundColor}"/>
+				</Grid.Background>
+				<Border x:Name="cubeNumber" Width="30" Height="30">
+					<Border.Background>
+						<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+					</Border.Background>
+					<TextBlock x:Name="songNumberTbx" TextWrapping="Wrap" Text="1" HorizontalAlignment="Center" FontWeight="Bold"/>
+				</Border>
+				<Border x:Name="rightBoarder" Width="400" Height="30" Grid.Column="2">
+					<Border.Background>
+						<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+					</Border.Background>
+					<StackPanel x:Name="songTextPanel" Margin="7,0,0,0" Orientation="Horizontal" d:LayoutOverrides="Height">
+						<TextBlock x:Name="artistTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left" Text="{Binding Artist}"/>
+						<TextBlock x:Name="slashTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left"><Run FontFamily="Segoe WP Semibold" Text="/"/></TextBlock>
+						<TextBlock x:Name="songTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left" Margin="5,0,0,-1" FontFamily="Segoe WP SemiLight" Text="{Binding Name}"/>
+					</StackPanel>
+				</Border>
 			</Grid>
 		</DataTemplate>
 	</phone:PhoneApplicationPage.Resources>
@@ -56,7 +74,7 @@
             	</TextBlock.Foreground>
             </TextBlock>
         </StackPanel>
-        <ListBox x:Name="songsListBox" Grid.Row="1" ItemsSource="{Binding Songs}" ItemTemplate="{StaticResource songListItem}" SelectionChanged="OnSelectedSongChanged" SelectedItem="{Binding SelectedSong, Mode=TwoWay}" />
+        <ListBox x:Name="songsListBox" Grid.Row="1" ItemsSource="{Binding Songs}" ItemTemplate="{StaticResource songListItem}" SelectionChanged="OnSelectedSongChanged" SelectedItem="{Binding SelectedSong, Mode=TwoWay}" HorizontalContentAlignment="Stretch" />
 
     </Grid>
  
