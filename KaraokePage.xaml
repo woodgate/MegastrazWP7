@@ -38,6 +38,81 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+		<Style x:Key="stopButton" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Canvas Background="Transparent" Height="64" Width="64">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed"/>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Ellipse Fill="#FFFAFAFE" Height="63" StrokeThickness="7" Canvas.Top="1" Width="64">
+								<Ellipse.Stroke>
+									<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+								</Ellipse.Stroke>
+							</Ellipse>
+							<Rectangle Height="22" Canvas.Left="21" StrokeThickness="7" Canvas.Top="22" Width="22">
+								<Rectangle.Fill>
+									<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+								</Rectangle.Fill>
+							</Rectangle>
+						</Canvas>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="shareButton" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+			<Setter Property="BorderThickness" Value="{StaticResource PhoneBorderThickness}"/>
+			<Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}"/>
+			<Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+			<Setter Property="Padding" Value="10,3,10,5"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Canvas Background="Transparent" Height="64" Width="64">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="MouseOver"/>
+									<VisualState x:Name="Pressed"/>
+									<VisualState x:Name="Disabled"/>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							<Ellipse Fill="#FFFAFAFE" Height="63" StrokeThickness="7" Canvas.Top="1" Width="64">
+								<Ellipse.Stroke>
+									<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+								</Ellipse.Stroke>
+							</Ellipse>
+							<Path Data="M21,29 L45,29 L32,8 z" Height="19" Canvas.Left="19" Stretch="Fill" StrokeThickness="7" Canvas.Top="14" UseLayoutRounding="False" Width="27" RenderTransformOrigin="0.417,0.619">
+								<Path.Fill>
+									<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+								</Path.Fill>
+							</Path>
+							<Rectangle Height="15" Canvas.Left="26" StrokeThickness="7" Canvas.Top="32" Width="13">
+								<Rectangle.Fill>
+									<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
+								</Rectangle.Fill>
+							</Rectangle>
+						</Canvas>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 	</phone:PhoneApplicationPage.Resources>
  
 	<phone:PhoneApplicationPage.FontFamily>

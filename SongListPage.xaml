@@ -13,7 +13,7 @@
 
 	<phone:PhoneApplicationPage.Resources>
 		<DataTemplate x:Key="songListItem">
-			<Grid>
+			<Grid Height="80">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto"/>
 					<ColumnDefinition Width="3"/>
@@ -22,20 +22,20 @@
 				<Grid.Background>
 					<SolidColorBrush Color="{StaticResource PhoneContrastBackgroundColor}"/>
 				</Grid.Background>
-				<Border x:Name="cubeNumber" Width="30" Height="30">
+				<Border x:Name="cubeNumber" Width="30" Margin="0,0,0,3">
 					<Border.Background>
 						<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
 					</Border.Background>
-					<TextBlock x:Name="songNumberTbx" TextWrapping="Wrap" Text="1" HorizontalAlignment="Center" FontWeight="Bold"/>
+					<TextBlock x:Name="songNumberTbx" TextWrapping="Wrap" Text="1" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" FontSize="46.667"/>
 				</Border>
-				<Border x:Name="rightBoarder" Width="400" Height="30" Grid.Column="2">
+				<Border x:Name="rightBoarder" Width="400" Grid.Column="2" Margin="0,0,0,3">
 					<Border.Background>
 						<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
 					</Border.Background>
 					<StackPanel x:Name="songTextPanel" Margin="7,0,0,0" Orientation="Horizontal" d:LayoutOverrides="Height">
-						<TextBlock x:Name="artistTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left" Text="{Binding Artist}"/>
-						<TextBlock x:Name="slashTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left"><Run FontFamily="Segoe WP Semibold" Text="/"/></TextBlock>
-						<TextBlock x:Name="songTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left" Margin="5,0,0,-1" FontFamily="Segoe WP SemiLight" Text="{Binding Name}"/>
+						<TextBlock x:Name="artistTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left" Text="{Binding Artist}" FontSize="46.667"/>
+						<TextBlock x:Name="slashTbx" TextWrapping="Wrap" Height="51" HorizontalAlignment="Center" FontSize="46.667" VerticalAlignment="Center" Margin="0,-10,0,0" FontFamily="Segoe WP SemiLight"><Run Text="/"/></TextBlock>
+						<TextBlock x:Name="songTbx" TextWrapping="Wrap" Height="31" HorizontalAlignment="Left" Margin="5,0,0,-1" FontFamily="Segoe WP SemiLight" Text="{Binding Name}" FontSize="46.667"/>
 					</StackPanel>
 				</Border>
 			</Grid>
