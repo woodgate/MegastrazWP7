@@ -33,7 +33,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <phone:WebBrowser x:Name="FacebookLoginBrowser" Navigated="FacebookLoginBrowser_Navigated" IsScriptEnabled="True" Height="400" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400" Margin="27,6,29,0" Grid.Row="1" />
+            <phone:WebBrowser x:Name="FacebookLoginBrowser" Navigated="FacebookLoginBrowser_Navigated" IsScriptEnabled="True" Height="595" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400" Margin="27,6,29,0" Grid.Row="1" />
 
 
         </Grid>
