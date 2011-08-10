@@ -59,7 +59,7 @@
         	<RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--<MediaElement x:Name="karaokePlayer" Volume="1" AutoPlay="False" Source="Videos/Abba_Mamma_Mia.wmv"/>-->
+        <MediaElement x:Name="karaokePlayer" Volume="1" AutoPlay="False" Source="Videos\Abba_Mamma_Mia.wmv"/>
     	<Rectangle x:Name="cameraPreview" Fill="#FFFAFAFE" Grid.Row="1" StrokeThickness="7"/>
         <Button x:Name="funcBtn" Content="Button" Style="{StaticResource recButtonStyle}" RenderTransformOrigin="0.514,0.676" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="OnFuncButtonClick" />
         <ProgressBar Grid.Row="3" d:LayoutOverrides="GridBox" Value="50" Padding="0" Width="350" Margin="0,0,0,20"/>
