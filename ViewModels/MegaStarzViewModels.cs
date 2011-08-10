@@ -116,11 +116,16 @@ namespace MegaStarzWP7.ViewModels
                 bool exists = SongManager.CheckIfSongIsLoaded(s.id);
                 //Download song from server with DownloadSongComplete callback
 
-                //Create corresponding SongModel
-                var songModel = new SongModel(s.id, s.artistName, s.name, LengthToString(s.length), string.Empty,
-                                              new Uri(s.playUrl), exists); //TODO: Get Song Picture
+                if (exists) //TODO: Remove this later
+                {
+                    //Create corresponding SongModel
+                    var songModel = new SongModel(s.id, s.artistName, s.name, LengthToString(s.length), string.Empty,
+                                                  new Uri(s.playUrl), exists); //TODO: Get Song Picture
 
-                songs.Add(songModel);
+                    songs.Add(songModel);
+                }
+
+                
             }
         }
 

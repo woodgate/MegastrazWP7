@@ -122,7 +122,7 @@ namespace MegaStarzWP7.Models
         {
             get
             {
-                return SongManager.fileDirectory + "\\" + id.ToString();
+                return SongManager.fileDirectory + "\\" + id.ToString() + ".wmv";
             }
             set { //DoNothing
                 }
