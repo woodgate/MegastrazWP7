@@ -117,12 +117,11 @@ namespace MegaStarzWP7.Models
             }
         }
 
-        private string songURI;
-        public string SongURI
+       public string SongURI
         {
             get
             {
-                return SongManager.fileDirectory + "\\" + id.ToString() + ".wmv";
+                return SongManager.fileDirectory + "\\" + id.ToString() + ".mp3";
             }
             set { //DoNothing
                 }

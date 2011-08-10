@@ -52,6 +52,12 @@ namespace MegaStarzWP7.ViewModels
         }
 
 
+        /// <summary>
+        /// Action to take when download completed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="song"></param>
         private static void webClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e, SongModel song)
         {
             try
@@ -91,19 +97,22 @@ namespace MegaStarzWP7.ViewModels
         }
 
         
-
+        /// <summary>
+        /// Copy pre deployed songs from the XAP to the IsolatedFileStore
+        /// </summary>
         public static void InitIsolatedStore()
         {
 
             FilesManager.CreateDirectory(fileDirectory);
 
             //Add two song files to the Isolated store
-            //FilesManager.CopyFileFromXAP("Videos\\Abba_Mamma_Mia.wmv", fileDirectory + "\\" + "3.wmv");
+            FilesManager.CopyFileFromXAP("Videos\\Abba_Mamma_Mia.mp3", fileDirectory + "\\" + "3.mp3");
 
             //Add two song files to the Isolated store
             //FilesManager.CopyFileFromXAP("Videos\\Abba_The_Winner_Takes_it_all.wmv", fileDirectory + "\\" + "4.wmv");
 
-            FilesManager.CopyFileFromXAP("Videos\\Abba_Mamma_Mia.wav", fileDirectory + "\\" + "test.wav");
+            //Sound Effect test
+            //FilesManager.CopyFileFromXAP("Videos\\Abba_Mamma_Mia.wav", fileDirectory + "\\" + "test.wav");
 
         }
     }

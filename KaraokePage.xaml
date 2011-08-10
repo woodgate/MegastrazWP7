@@ -4,7 +4,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="MegaStarzWP7.KaraokePage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:MegaStarzWP7_ViewModels="clr-namespace:MegaStarzWP7.ViewModels" x:Class="MegaStarzWP7.KaraokePage"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
@@ -126,7 +126,7 @@
 	</phone:PhoneApplicationPage.Foreground>
 
     <!--    Root grid where all page content is placed  -->
-    <Grid x:Name="mainGrid" Background="White">
+    <Grid x:Name="mainGrid" Background="White" >
         <Grid.RowDefinitions>
         	<RowDefinition Height="360"/>
         	<RowDefinition Height="270"/>
@@ -134,7 +134,8 @@
         	<RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--<MediaElement x:Name="karaokePlayer" Volume="1" AutoPlay="False" Source="Videos\Abba_Mamma_Mia.wmv"/>-->        
+        <!--<MediaElement x:Name="karaokePlayer" Volume="1" AutoPlay="True" Source="{Binding SelectedSong.SongURI}" />-->
+        <MediaElement x:Name="karaokePlayer" Volume="1" AutoPlay="True" Source="Videos\Abba_Mamma_Mia.mp3" />
     	<Rectangle x:Name="cameraPreview" Fill="#FFFAFAFE" Grid.Row="1" StrokeThickness="7"/>
         <Button x:Name="funcBtn" Content="Button" Style="{StaticResource recButtonStyle}" RenderTransformOrigin="0.514,0.676" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="OnFuncButtonClick" />
         <ProgressBar Grid.Row="3" d:LayoutOverrides="GridBox" Value="50" Padding="0" Width="350" Margin="0,0,0,20"/>

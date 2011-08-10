@@ -34,6 +34,10 @@ namespace MegaStarzWP7.ViewModels
             return false;
         }
 
+        /// <summary>
+        /// Create a new directory
+        /// </summary>
+        /// <param name="fileDirectory"></param>
         public static void CreateDirectory(string fileDirectory)
         {
             IsolatedStorageFile isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
@@ -44,39 +48,12 @@ namespace MegaStarzWP7.ViewModels
             }
         }
 
-        public static IsolatedStorageFileStream OpenSongStream(string path)
-        {
-            //TODO: Handle Error
-            IsolatedStorageFile isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
-
-            return isolatedStorageFile.OpenFile(path,FileMode.Open);
-        }
-
 
         /// <summary>
-        /// Save file containing string as a content
+        /// Copy file from the XAP to the isolated storage
         /// </summary>
-        /// <param name="fileName">The file name</param>
-        /// <param name="content">The content of the file</param>
-        public static void SaveStringFile(string fileName, string content)
-        {
-            try
-            {
-                using (var store = IsolatedStorageFile.GetUserStoreForApplication())
-                using (var stream = new IsolatedStorageFileStream(
-                    fileName,FileMode.Create,FileAccess.Write,store))
-                {
-                    var writer = new StreamWriter(stream);
-                    writer.Write(content);
-                    writer.Close();
-                }
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("Error while saving file: " + exception.Message);
-            }
-        }
-
+        /// <param name="sourceFileName"></param>
+        /// <param name="destinationFileName"></param>
         public static void CopyFileFromXAP(string sourceFileName, string destinationFileName)
         {
             //TODO: 10/8 Handle Errors

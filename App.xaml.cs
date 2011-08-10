@@ -69,7 +69,7 @@ namespace MegaStarzWP7
             SongList = new MegaStarzViewModels();
 
             //Init isolated store with songs in XAP
-            SongManager.InitIsolatedStore();
+            SongManager.InitIsolatedStore(); //TODO: Uncomment this when solution for playback 
 
             //Get songs from AZURE
             SongList.LoadSongs();

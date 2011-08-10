@@ -18,29 +18,12 @@ namespace MegaStarzWP7.ViewModels
         {
             songs = new ObservableCollection<SongModel>();
             //TODO: check in the settings if it is the first time
-            //FirstTimeInitialization();
+           
         }
 
         #endregion
 
-        #region First Time Intioalization Method
-
-        private void FirstTimeInitialization()
-        {
-                using (var store = IsolatedStorageFile.GetUserStoreForApplication())
-                {
-                    store.CreateDirectory("Videos");
-                    //create first song
-                    songs.Add(new SongModel(0, "Abba", "Mamma Mia", "00:00", "", null, true));
-                    //TODO: store the first song
-                    //create second song
-                    songs.Add(new SongModel(0, "Abba", "The Winner Takes It All", "00:00", "", null, true));
-                    //TODO: store the seconde song
-                }
-        }
-        
-        #endregion
-
+     
         #region Properties
 
         private ObservableCollection<SongModel> songs;
