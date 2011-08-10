@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Newtonsoft.Json.WindowsPhone">
       <HintPath>_Resources\Newtonsoft.Json.WindowsPhone.dll</HintPath>
     </Reference>
@@ -117,12 +118,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SplashScreenImage.jpg" />
-    <EmbeddedResource Include="Videos\Abba_Mamma_Mia.wmv">
+    <EmbeddedResource Include="Videos\Abba_Mamma_Mia.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Videos\Abba_The_Winner_Takes_it_all.wmv">
+    <Resource Include="Videos\jingle.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Resource>
+    <Resource Include="Videos\Abba_Mamma_Mia.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Videos\Abba_The_Winner_Takes_it_all.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\" />
