@@ -26,7 +26,7 @@
 					</Border.Background>
 					<StackPanel x:Name="songTextPanel" Margin="7,0,0,0" Orientation="Horizontal" d:LayoutOverrides="Height">
 						<TextBlock x:Name="artistTbx" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Artist}" FontSize="46.667" Margin="0" VerticalAlignment="Center"/>
-						<TextBlock x:Name="songTbx" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="5,0,0,0" FontFamily="Segoe WP SemiLight" Text="{Binding Name}" FontSize="46.667" VerticalAlignment="Center"/>
+						<TextBlock x:Name="songTbx" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="8,0,0,0" FontFamily="Segoe WP SemiLight" Text="{Binding Name}" FontSize="46.667" VerticalAlignment="Center"/>
 					</StackPanel>
 				</Border>
 			</Grid>
