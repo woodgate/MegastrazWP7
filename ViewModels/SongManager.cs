@@ -23,7 +23,7 @@ namespace MegaStarzWP7.ViewModels
         {
             var _isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
             return
-            _isolatedStorageFile.FileExists(fileDirectory + "\\" + id.ToString());
+            _isolatedStorageFile.FileExists(fileDirectory + "\\" + id.ToString() + ".wmv");
         }
 
 
@@ -98,10 +98,10 @@ namespace MegaStarzWP7.ViewModels
             FilesManager.CreateDirectory(fileDirectory);
 
             //Add two song files to the Isolated store
-            FilesManager.CopyFileFromXAP("Videos\\Abba_Mamma_Mia.wmv", fileDirectory + "\\" + "3");
+            FilesManager.CopyFileFromXAP("Videos\\Abba_Mamma_Mia.wmv", fileDirectory + "\\" + "3.wmv");
 
             //Add two song files to the Isolated store
-            FilesManager.CopyFileFromXAP("Videos\\Abba_The_Winner_Takes_it_all.wmv", fileDirectory + "\\" + "4");
+            FilesManager.CopyFileFromXAP("Videos\\Abba_The_Winner_Takes_it_all.wmv", fileDirectory + "\\" + "4.wmv");
 
         }
     }

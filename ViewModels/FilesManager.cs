@@ -44,6 +44,15 @@ namespace MegaStarzWP7.ViewModels
             }
         }
 
+        public static IsolatedStorageFileStream OpenSongStream(string path)
+        {
+            //TODO: Handle Error
+            IsolatedStorageFile isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
+
+            return isolatedStorageFile.OpenFile(path,FileMode.Open);
+        }
+
+
         /// <summary>
         /// Save file containing string as a content
         /// </summary>
@@ -70,6 +79,8 @@ namespace MegaStarzWP7.ViewModels
 
         public static void CopyFileFromXAP(string sourceFileName, string destinationFileName)
         {
+            //TODO: 10/8 Handle Errors
+
             IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication();
             
             if (!isf.FileExists(destinationFileName))
