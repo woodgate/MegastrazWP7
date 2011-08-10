@@ -12,7 +12,7 @@ namespace MegaStarzWP7.ViewModels
     /// </summary>
     public class SongManager
     {
-        public readonly static string fileDirectory = @"Megastarz\Video"; //TODO: Get from settings
+        public readonly static string fileDirectory = @"Megastarz"; //TODO: Get from settings
         
         /// <summary>
         /// Checks if the song already on the device
@@ -67,11 +67,6 @@ namespace MegaStarzWP7.ViewModels
 
                     bool checkQuotaIncrease = FilesManager.CanIsolatedStorageSpaceSizeIncrease(e.Result.Length);
 
-                    if (!isolatedStorageFile.DirectoryExists(fileDirectory))
-                    {
-                        isolatedStorageFile.CreateDirectory(fileDirectory);
-                    }
-
                     string VideoFile = fileDirectory + "\\" + song.Id.ToString();
                     isolatedStorageFileStream = new IsolatedStorageFileStream(VideoFile, FileMode.Create, isolatedStorageFile);
                     
@@ -95,5 +90,19 @@ namespace MegaStarzWP7.ViewModels
             }
         }
 
+        
+
+        public static void InitIsolatedStore()
+        {
+
+            FilesManager.CreateDirectory(fileDirectory);
+
+            //Add two song files to the Isolated store
+            FilesManager.CopyFileFromXAP("Videos\\Abba_Mamma_Mia.wmv", fileDirectory + "\\" + "3");
+
+            //Add two song files to the Isolated store
+            FilesManager.CopyFileFromXAP("Videos\\Abba_The_Winner_Takes_it_all.wmv", fileDirectory + "\\" + "4");
+
+        }
     }
 }

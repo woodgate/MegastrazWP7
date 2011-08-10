@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO.IsolatedStorage;
+using System.Windows;
 using MegaStarzWP7.Models;
 using Megastar.Client.Library;
 using Megastar.RestServices.Library.Entities;
@@ -17,7 +18,7 @@ namespace MegaStarzWP7.ViewModels
         {
             songs = new ObservableCollection<SongModel>();
             //TODO: check in the settings if it is the first time
-            FirstTimeInitialization();
+            //FirstTimeInitialization();
         }
 
         #endregion
@@ -101,7 +102,7 @@ namespace MegaStarzWP7.ViewModels
             }
             catch (Exception e)
             {
-                throw e; //TODO: Handle Error
+                MessageBox.Show("Could not get song list from server");
             }
         }
 
@@ -135,11 +136,7 @@ namespace MegaStarzWP7.ViewModels
 
         #endregion
 
-        #region IsolatedStorage Methods
-
-        #endregion
-
-
+     
         #region Implementation of INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
