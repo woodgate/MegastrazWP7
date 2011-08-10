@@ -145,6 +145,15 @@
     </Resource>
     <Resource Include="Videos\Abba_The_Winner_Takes_it_all.wmv" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graphics\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="MegaStarzAudioPlaybackAgent\MegaStarzAudioPlaybackAgent.csproj">
+      <Project>{652A3C4C-B3CF-44F1-8485-641310A2A532}</Project>
+      <Name>MegaStarzAudioPlaybackAgent</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

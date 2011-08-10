@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+﻿using System.Windows;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using MegaStarzWP7.ViewModels;
 using Megastar.RestServices.Library.Entities;
 using Microsoft.Phone.Controls;
@@ -25,7 +15,7 @@ namespace MegaStarzWP7
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
-        public MegaStarzViewModels SongList;
+        public MegaStarzViewModels MegaStarzViewModelInstance;
         public string starTicket;
         public StarResponse star;
 
@@ -69,13 +59,13 @@ namespace MegaStarzWP7
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            SongList = new MegaStarzViewModels();
+            MegaStarzViewModelInstance = new MegaStarzViewModels();
 
             //Init isolated store with songs in XAP
             SongManager.InitIsolatedStore(); //TODO: Uncomment this when solution for playback 
 
             //Get songs from AZURE
-            SongList.LoadSongs();
+            MegaStarzViewModelInstance.LoadSongs();
 
         }
 

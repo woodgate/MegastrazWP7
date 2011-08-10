@@ -9,7 +9,7 @@ namespace MegaStarzWP7
     {
         public SongListPage()
         {
-            DataContext = ((App) Application.Current).SongList;
+            DataContext = ((App) Application.Current).MegaStarzViewModelInstance;
             InitializeComponent();
         }
 

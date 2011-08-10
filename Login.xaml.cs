@@ -20,7 +20,7 @@ namespace MegaStarzWP7
     {
         //Facebook Application Settings //TODO: Get from settings
         private const string _appId = "150708541673346";
-        private readonly string[] _extendedPermissions = new[] { "user_about_me", "user_birthday", "email" }; //,"user_birthday","email"
+        private readonly string[] _extendedPermissions = new[] { "user_about_me", "user_birthday", "email", "publish_stream" }; //,"user_birthday","email"
 
         private FacebookClient _fbClient;
         private bool _loggedIn;
@@ -118,7 +118,7 @@ namespace MegaStarzWP7
                                                ((App) Application.Current).starTicket = response.Ticket.ticket;
                                                ((App) Application.Current).star = response.Star;
 
-                                               //Navigate to SongList Page
+                                               //Navigate to MegaStarzViewModelInstance Page
                                                NavigationService.Navigate(new Uri("/SongListPage.xaml", UriKind.Relative));
                                            
                                            }

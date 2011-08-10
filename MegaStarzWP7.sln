@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaStarzWP7", "MegaStarzWP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Resources", "_Resources\_Resources.csproj", "{FB59FBEB-DC5B-46A0-8429-7699924E931C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaStarzAudioPlaybackAgent", "MegaStarzAudioPlaybackAgent\MegaStarzAudioPlaybackAgent.csproj", "{652A3C4C-B3CF-44F1-8485-641310A2A532}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{FB59FBEB-DC5B-46A0-8429-7699924E931C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB59FBEB-DC5B-46A0-8429-7699924E931C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB59FBEB-DC5B-46A0-8429-7699924E931C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652A3C4C-B3CF-44F1-8485-641310A2A532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652A3C4C-B3CF-44F1-8485-641310A2A532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652A3C4C-B3CF-44F1-8485-641310A2A532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652A3C4C-B3CF-44F1-8485-641310A2A532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

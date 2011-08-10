@@ -7,6 +7,7 @@ using System.Windows;
 using MegaStarzWP7.Models;
 using Megastar.Client.Library;
 using Megastar.RestServices.Library.Entities;
+using Microsoft.Phone.BackgroundAudio;
 
 namespace MegaStarzWP7.ViewModels
 {
@@ -16,14 +17,11 @@ namespace MegaStarzWP7.ViewModels
 
         public MegaStarzViewModels()
         {
-            songs = new ObservableCollection<SongModel>();
-            //TODO: check in the settings if it is the first time
-           
+            songs = new ObservableCollection<SongModel>();          
         }
 
         #endregion
 
-     
         #region Properties
 
         private ObservableCollection<SongModel> songs;
@@ -123,7 +121,6 @@ namespace MegaStarzWP7.ViewModels
         }
 
         #endregion
-
      
         #region Implementation of INotifyPropertyChanged
 
