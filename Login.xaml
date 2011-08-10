@@ -14,17 +14,20 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot">
+    	<Grid.Background>
+    		<SolidColorBrush Color="{StaticResource PhoneContrastBackgroundColor}"/>
+    	</Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        
+        
+    <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28"/>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
@@ -34,6 +37,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <phone:WebBrowser x:Name="FacebookLoginBrowser" Navigated="FacebookLoginBrowser_Navigated" IsScriptEnabled="True" Height="595" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400" Margin="27,6,29,0" Grid.Row="1" />
+            <Image Height="84" Margin="135,0,141,0" Source="Graphics/logo-glnc.png" Stretch="Fill" VerticalAlignment="Top"/>
 
 
         </Grid>
