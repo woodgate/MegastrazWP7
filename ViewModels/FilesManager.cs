@@ -11,7 +11,7 @@ namespace MegaStarzWP7.ViewModels
     /// </summary>
     public class FilesManager
     {
-
+        
         /// <summary>
         /// Check if there is enough space in the IsolatedStorage
         /// </summary>
@@ -32,6 +32,16 @@ namespace MegaStarzWP7.ViewModels
                 return true;
             }
             return false;
+        }
+
+        public static void CreateDirectory(string fileDirectory)
+        {
+            IsolatedStorageFile isolatedStorageFile = IsolatedStorageFile.GetUserStoreForApplication();
+
+            if (!isolatedStorageFile.DirectoryExists(fileDirectory))
+            {
+                isolatedStorageFile.CreateDirectory(fileDirectory);
+            }
         }
 
         /// <summary>
@@ -56,6 +66,47 @@ namespace MegaStarzWP7.ViewModels
             {
                 MessageBox.Show("Error while saving file: " + exception.Message);
             }
+        }
+
+        public static void CopyFileFromXAP(string sourceFileName, string destinationFileName)
+        {
+            IsolatedStorageFile isf = IsolatedStorageFile.GetUserStoreForApplication();
+            
+            if (!isf.FileExists(destinationFileName))
+	        {
+                
+                BinaryReader fileReader = new BinaryReader(Application.GetResourceStream(new Uri(sourceFileName, UriKind.Relative)).Stream);
+
+                //Increase Isolated Storage Quota If needed
+                bool checkQuotaIncrease = FilesManager.CanIsolatedStorageSpaceSizeIncrease(fileReader.BaseStream.Length);
+
+
+	            IsolatedStorageFileStream outFile = new IsolatedStorageFileStream(destinationFileName, FileMode.Create, isf);
+                    
+
+                
+	            bool eof = false;
+	            long fileLength = fileReader.BaseStream.Length;
+	            int writeLength = 512;
+	            while (!eof)
+	            {
+	                if (fileLength < 512)
+	                {
+	                    writeLength = Convert.ToInt32(fileLength);
+	                    outFile.Write(fileReader.ReadBytes(writeLength), 0, writeLength);
+	                }
+	                else
+	                {
+	                    outFile.Write(fileReader.ReadBytes(writeLength), 0, writeLength);
+	                }
+	 
+	                fileLength = fileLength - 512;
+	 
+	                if (fileLength <= 0) eof = true;
+	            }
+	            fileReader.Close();
+	            outFile.Close();
+	        }
         }
 
         /// <summary>

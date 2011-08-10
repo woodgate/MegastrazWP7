@@ -117,8 +117,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SplashScreenImage.jpg" />
-    <Resource Include="Videos\Abba_Mamma_Mia.wmv" />
-    <Resource Include="Videos\Abba_The_Winner_Takes_it_all.wmv" />
+    <EmbeddedResource Include="Videos\Abba_Mamma_Mia.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Videos\Abba_The_Winner_Takes_it_all.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Graphics\" />
