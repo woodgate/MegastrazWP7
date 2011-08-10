@@ -118,7 +118,7 @@ namespace MegaStarzWP7
                                                ((App) Application.Current).starTicket = response.Ticket.ticket;
                                                ((App) Application.Current).star = response.Star;
 
-                                               //Navigate to SongList Page
+                                               //Navigate to MegaStarzViewModelInstance Page
                                                NavigationService.Navigate(new Uri("/SongListPage.xaml", UriKind.Relative));
                                            
                                            }
