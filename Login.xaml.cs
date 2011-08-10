@@ -103,7 +103,7 @@ namespace MegaStarzWP7
             TitlePanel.Visibility = Visibility.Visible;
             FacebookLoginBrowser.Visibility = Visibility.Collapsed;
 
-            var client = new MegaStarzClient("http://localhost:81/Services/WP7/"); 
+            var client = new MegaStarzClient(); 
 
             //Get a ticket from the clod
             client.GetTicketAsync(new GetTicketRequest()
