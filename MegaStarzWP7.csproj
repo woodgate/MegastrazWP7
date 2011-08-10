@@ -50,11 +50,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>packages\Facebook.5.1.1.0\lib\sl3-wp\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Megastar.Client.Library">
       <HintPath>_Resources\Megastar.Client.Library.dll</HintPath>
     </Reference>
     <Reference Include="Megastar.RestServices.Library">
       <HintPath>_Resources\Megastar.RestServices.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Contracts">
+      <HintPath>packages\CodeContracts.Unofficial.1.0.0.2\lib\sl3-wp\Microsoft.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
@@ -114,6 +120,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>

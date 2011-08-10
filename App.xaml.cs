@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MegaStarzWP7.ViewModels;
+using Megastar.RestServices.Library.Entities;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -25,6 +26,8 @@ namespace MegaStarzWP7
         public PhoneApplicationFrame RootFrame { get; private set; }
 
         public MegaStarzViewModels SongList;
+        public string starTicket;
+        public StarResponse star;
 
         /// <summary>
         /// Constructor for the Application object.
