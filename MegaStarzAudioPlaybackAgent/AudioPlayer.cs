@@ -11,8 +11,8 @@ namespace MegaStarzAudioPlaybackAgent
         private void playTrack(BackgroundAudioPlayer player)
         {
             //TODO: add the track tp play here            
-            player.Track = new AudioTrack(SelectedTrack.SelectedSongUri,"Name", "Artist", "Album", null); ;
-            player.Play();
+            player.Track = new AudioTrack(new Uri(@"Megastarz\3.mp3", UriKind.Relative), "Name", "Artist", "Album", null); ;
+//            player.Track = new AudioTrack(SelectedTrack.SelectedSongUri, "Name", "Artist", "Album", null); ;
         }
 
         #endregion
@@ -35,11 +35,19 @@ namespace MegaStarzAudioPlaybackAgent
             {
                 case PlayState.TrackReady:
                     // The track to play is set in the PlayTrack method.
-                    playTrack(player);
+                    player.Volume = 1;
+                    player.Play();
                     break;
 
                 case PlayState.TrackEnded:
-                    player.Stop();
+                    try
+                    {
+                        player.Stop();
+                    }
+                    catch (Exception e)
+                    {
+                        //Console.WriteLine(e);
+                    }
                     break;
             }
             NotifyComplete();
@@ -66,7 +74,7 @@ namespace MegaStarzAudioPlaybackAgent
             switch (action)
             {
                 case UserAction.Play:
-                    player.Play();
+                    playTrack(player);
                     break;
 
                 case UserAction.Stop:
