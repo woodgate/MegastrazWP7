@@ -212,12 +212,7 @@
 					<ControlTemplate TargetType="TextBox">
 						<Grid>
 							<Grid.Resources>
-								<Storyboard x:Name="Storyboard1">
-									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="textBlock">
-										<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-										<EasingDoubleKeyFrame KeyTime="0:0:19.9" Value="-1616.5"/>
-									</DoubleAnimationUsingKeyFrames>
-								</Storyboard>
+								<Storyboard x:Name="Storyboard1"/>
 							</Grid.Resources>
 							<Grid.RowDefinitions>
 								<RowDefinition Height="0.067*"/>
@@ -228,14 +223,35 @@
 									<SolidColorBrush Color="{StaticResource PhoneAccentColor}"/>
 								</Rectangle.Fill>
 							</Rectangle>
-							<TextBlock x:Name="textBlock" Margin="41,0,41,-1246" TextWrapping="Wrap" FontSize="32" TextAlignment="Center" Foreground="White" Grid.Row="1" Height="1246" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
-								<TextBlock.RenderTransform>
-									<CompositeTransform/>
-								</TextBlock.RenderTransform><Run Text="And I'd give up forever to touch you "/><LineBreak/><Run Text="Cause I know that you feel me somehow "/><LineBreak/><Run Text="You're the closest to heaven that I'll ever be "/><LineBreak/><Run Text="And I don't want to go home right now "/><LineBreak/><Run Text="Verse 2 "/><LineBreak/><Run/><LineBreak/><Run Text="And all I can taste is this moment "/><LineBreak/><Run Text="And all I can breathe is your life "/><LineBreak/><Run Text="Cause sooner or later it's over "/><LineBreak/><Run Text="I just don't want to miss you tonight "/><LineBreak/><Run Text="Chorus "/><LineBreak/><Run/><LineBreak/><Run Text="And I don't want the world to see me "/><LineBreak/><Run Text="Cause I don't think that they'd understand "/><LineBreak/><Run Text="When everything's made to be broken "/><LineBreak/><Run Text="I just want you to know who I am "/><LineBreak/><Run Text="Verse 3 "/><LineBreak/><Run/><LineBreak/><Run Text="And you can't fight the tears that ain't coming "/><LineBreak/><Run Text="Or the moment of truth in your lies "/><LineBreak/><Run Text="When everything seems like the movies "/><LineBreak/><Run Text="Yeah you bleed just to know your alive "/><LineBreak/><Run/></TextBlock>
 						</Grid>
 					</ControlTemplate>
 				</Setter.Value>
 			</Setter>
+		</Style>
+		<Style x:Key="lyricsAnim" TargetType="Button">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Grid>
+							<Grid.Resources>
+								<Storyboard x:Name="lyricsAnimation">
+									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="contentPresenter">
+										<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+										<EasingDoubleKeyFrame KeyTime="0:0:20" Value="-1644"/>
+									</DoubleAnimationUsingKeyFrames>
+								</Storyboard>
+							</Grid.Resources>
+							<ContentPresenter x:Name="contentPresenter" RenderTransformOrigin="0.5,0.5">
+								<ContentPresenter.RenderTransform>
+									<CompositeTransform/>
+								</ContentPresenter.RenderTransform>
+							</ContentPresenter>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="FontSize" Value="32"/>
+			<Setter Property="Foreground" Value="White"/>
 		</Style>
 	</phone:PhoneApplicationPage.Resources>
  
@@ -265,6 +281,11 @@
         <Button x:Name="funcBtn" Content="Button" Style="{StaticResource recButtonStyle}" RenderTransformOrigin="0.514,0.676" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="OnFuncButtonClick" />
         <ProgressBar Grid.Row="3" d:LayoutOverrides="GridBox" Value="50" Padding="0" Width="350" Margin="0,0,0,20"/>
     	<Rectangle x:Name="cameraPreview" Fill="White" Grid.Row="1" StrokeThickness="7"/>
+    	<Button Content="" Margin="41,0,41,-838" Grid.Row="1" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5" Style="{StaticResource lyricsAnim}">
+    		<Button.RenderTransform>
+    			<CompositeTransform/>
+    		</Button.RenderTransform>
+    	</Button>
 
     </Grid>
 
