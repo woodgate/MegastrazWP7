@@ -6,6 +6,17 @@ namespace MegaStarzAudioPlaybackAgent
     public class AudioPlayer : AudioPlayerAgent
     {
 
+        #region Utility Methods
+
+        private void playTrack(BackgroundAudioPlayer player)
+        {
+            //TODO: add the track tp play here            
+            player.Track = new AudioTrack(SelectedTrack.SelectedSongUri,"Name", "Artist", "Album", null); ;
+            player.Play();
+        }
+
+        #endregion
+        
         #region AudioPlayerAgent Methods
 
         /// <summary>
@@ -24,7 +35,7 @@ namespace MegaStarzAudioPlaybackAgent
             {
                 case PlayState.TrackReady:
                     // The track to play is set in the PlayTrack method.
-//                    player.Play();
+                    playTrack(player);
                     break;
 
                 case PlayState.TrackEnded:
